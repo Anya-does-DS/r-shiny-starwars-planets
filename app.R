@@ -107,7 +107,12 @@ server <- function(input, output) {
   # Filter data
   filtered_data <- reactive({
     req(input$selectionType)
-    selected_movies <- ifelse(input$selectionType == "single", input$movie, movie_order[1:input$movieCount])
+    selected_movies <- if (input$selectionType == "single") {
+      input$movie
+    } else {
+      movie_order[1:input$movieCount]
+    }
+    
     starwars %>%
       filter(!is.na(homeworld), !is.na(films)) %>%
       unnest_longer(films) %>%

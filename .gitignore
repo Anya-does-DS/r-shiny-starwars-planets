@@ -48,3 +48,4 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+"R_Shiny_plot.Rproj"   # Make sure it's ignored
